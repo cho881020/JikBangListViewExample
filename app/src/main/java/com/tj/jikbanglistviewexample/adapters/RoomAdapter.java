@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.tj.jikbanglistviewexample.R;
 import com.tj.jikbanglistviewexample.datas.Room;
@@ -35,6 +36,16 @@ public class RoomAdapter extends ArrayAdapter<Room> {
             row = inf.inflate(R.layout.room_list_item, null);
         }
 
+
+        Room roomData = mList.get(position);
+
+        TextView paymentTxt = row.findViewById(R.id.paymentTxt);
+        TextView locationAndFloorTxt = row.findViewById(R.id.locationAndFloorTxt);
+        TextView descriptionTxt = row.findViewById(R.id.descriptionTxt);
+
+        paymentTxt.setText(String.format("%d/%d", roomData.deposit, roomData.month_pay));
+        locationAndFloorTxt.setText(String.format("%s, %d층", roomData.location, roomData.floor));
+        descriptionTxt.setText(roomData.description);
 
         return row;
 
