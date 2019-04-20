@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.tj.jikbanglistviewexample.adapters.RoomAdapter;
 import com.tj.jikbanglistviewexample.databinding.ActivityMainBinding;
 import com.tj.jikbanglistviewexample.datas.Room;
 
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    RoomAdapter mRoomAdapter;
 
     List<Room> roomList = new ArrayList<>();
 
@@ -24,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         act.cleanRoomCountTxt.setText("32개");
 
         fillRooms();
+
+
+        mRoomAdapter = new RoomAdapter(MainActivity.this, roomList);
+        act.roomListView.setAdapter(mRoomAdapter);
+
 
     }
 
